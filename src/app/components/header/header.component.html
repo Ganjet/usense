@@ -1,0 +1,7 @@
+<div class="rates container" *ngIf="usdRate && eurRate; else loading">
+  <p>USD Rate: {{ usdRate.rate }}</p>
+  <p>EUR Rate: {{ eurRate.rate }}</p>
+</div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>

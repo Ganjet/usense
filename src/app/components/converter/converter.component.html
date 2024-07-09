@@ -1,0 +1,15 @@
+<div *ngIf="isLoading" class="loader">
+  Loading...
+</div>
+
+<div *ngIf="!isLoading">
+  <form [formGroup]="form" class="grid-container container">
+    <app-currency-converter-item [parentForm]="form" dropdownControlName="firstDropdown" inputControlName="value1"
+      [options]="currencyArray" (inputChange)="onInputChange($event)" (dropdownChange)="updateConversionRates()">
+    </app-currency-converter-item>
+
+    <app-currency-converter-item [parentForm]="form" dropdownControlName="secondDropdown" inputControlName="value2"
+      [options]="currencyArray" (inputChange)="onInputChange($event)" (dropdownChange)="updateConversionRates()">
+    </app-currency-converter-item>
+  </form>
+</div>

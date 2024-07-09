@@ -1,0 +1,36 @@
+<div class="grid-item" [formGroup]="parentForm">
+    <div class="currency-info">
+      <span class="currency-input">
+        <p-inputNumber 
+          [formControlName]="inputControlName" 
+          [minFractionDigits]="2" 
+          (ngModelChange)="onInputChange($event, inputControlName)">
+        </p-inputNumber>
+      </span>
+      <p-dropdown 
+        [formControlName]="dropdownControlName" 
+        [options]="options" 
+        optionLabel="txt" 
+        [showClear]="true"
+        [filter]="true" 
+        filterBy="txt" 
+        placeholder="Select a currency"
+        (onChange)="onDropdownChange($event)">
+        <ng-template pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2" *ngIf="parentForm.get(dropdownControlName)?.value">
+            <img [src]="'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + parentForm.get(dropdownControlName)?.value.cc.toUpperCase().substring(0, 2) + '.svg'"
+                style="width: 18px" />
+            <div>{{ parentForm.get(dropdownControlName)?.value.cc }}</div>
+          </div>
+        </ng-template>
+        <ng-template let-country pTemplate="item">
+          <div class="flex align-items-center gap-2">
+            <img [src]="'https://purecatamphetamine.github.io/country-flag-icons/3x2/' + country.cc.toUpperCase().substring(0, 2) + '.svg'"
+                style="width: 18px" />
+            <div>{{ country.txt }}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  
